@@ -5,7 +5,7 @@ const request = indexedDB.open('UserDatabase', 1);
 
 request.onupgradeneeded = function(event) {
     db = event.target.result;
-    const objectStore = db.createObjectStore('users', { keyPath: 'userId' });
+    const objectStore = db.createObjectStore('users', { keyPath: 'email' });
     objectStore.createIndex('email', 'email', { unique: true });
 };
 
