@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Symptoms</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="iphone-container">
+        <div class="calendar-header">
+            <button class="home-button" onclick="location.href='dashboard.html'">🏠</button>
+            <button class="menu-button" onclick="location.href='menu.html'">☰</button>
+        </div>
+        <div id="content">
+            <form id="symptoms-form" onsubmit="return saveSymptoms(event)">
+            <div class="section">
+                <h3>Mood</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="mood" value="Happy">😊Happy</label>
+                    <label><input type="checkbox" name="mood" value="Sad">😢Sad</label>
+                    <label><input type="checkbox" name="mood" value="Anxious">😟Anxious</label>
+                    <label><input type="checkbox" name="mood" value="Depressed">😞Depress</label>
+                    <label><input type="checkbox" name="mood" value="Angry">😡Angry</label>
+                    <label><input type="checkbox" name="mood" value="Calm">😌Calm</label>
+                    <label><input type="checkbox" name="mood" value="Emotional">😭Emotional</label>
+                    <label><input type="checkbox" name="mood" value="Tensed">😬Tensed</label>
+                </div>
+            </div>
+            <div class="section">
+                <h3>Symptoms</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" name="pms" value="Cramps">🤕Cramps</label>
+                    <label><input type="checkbox" name="pms" value="Nausea">🤢Nausea</label>
+                    <label><input type="checkbox" name="pms" value="Headache">🤕Headache</label>
+                    <label><input type="checkbox" name="pms" value="Bloating">🤰Bloating</label>
+                    <label><input type="checkbox" name="pms" value="Fever">🤒Fever</label>
+                    <label><input type="checkbox" name="pms" value="Fatigue">😩Fatigue</label>
+                    <label><input type="checkbox" name="pms" value="Acne">😣Acne</label>
+                    <label><input type="checkbox" name="pms" value="Vomiting">🤮Vomiting</label>
+                    <label><input type="checkbox" name="pms" value="Backpain">🤕Backpain</label>
+                    <label><input type="checkbox" name="pms" value="Insomnia">😴Insomnia</label>
+                    <label><input type="checkbox" name="pms" value="Diarrhea">💩 Diarrhea</label>
+                    <label><input type="checkbox" name="pms" value="Joint Pain">🤕Joint Pain</label>
+                    <label><input type="checkbox" name="pms" value="Tender Breasts">🤕TenderBreasts</label>
+                    <label><input type="checkbox" name="pms" value="Hungry">🍽️Hungry</label>
+                </div>
+            </div>
+            <div class="section">
+                <h3>Spotting</h3>
+                
+                    <label><input type="radio" name="spotting" value="No Spotting">No Spotting</label>
+                    <label><input type="radio" name="spotting" value="Light">Light</label>
+                    <label><input type="radio" name="spotting" value="Heavy">Heavy</label>
+                
+            </div>
+            <div class="section">
+                <h3>Menstrual Flow</h3>
+                    <label><input type="radio" name="flow" value="Light"> Light</label>
+                    <label><input type="radio" name="flow" value="Medium"> Medium</label>
+                    <label><input type="radio" name="flow" value="Heavy"> Heavy</label>
+                
+            </div>
+            <button type="submit">SAVE</button>
+            <button onclick="cancel()">CANCEL</button>
+        </form>
+        </div>
+    </div>
+    <script src="js/db.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+

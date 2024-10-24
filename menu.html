@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Overlay</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="iphone-container">
+        <div id="menuOverlay" class="menu-overlay">
+                <a href="dashboard.html">Home</a><br>
+                <a href="details.html">Profile</a><br>
+                <a href="calendar.html">Calendar</a><br>
+                <a href="add-period.html">Add Period</a><br>
+                <a href="symptoms.html">Log Symptoms</a><br>
+                <a href="pms-insights.html">PMS Insights</a><br>
+                <a href="cycle-analytics.html">Cycle Analytics</a><br>
+                <a href="#" id="logout">Logout</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('logout').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            sessionStorage.removeItem('email'); // Remove email from session storage
+            window.location.href = 'index.html'; // Redirect to login page
+        });
+    </script>
+</body>
+</html>
+

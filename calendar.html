@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="iphone-container">
+        <div id="content">
+            <div class="calendar-header">
+                <button class="home-button" onclick="location.href='dashboard.html'">🏠</button>
+                <h2 id="month-year"></h2>
+                <button class="menu-button" onclick="location.href='menu.html'">☰</button>
+            </div>
+            <div class="calendar" id="calendar-grid">
+                <!-- Calendar grid will be generated here -->
+            </div>
+            <div class="legend">
+                <span class="legend-item period">Period</span>
+                <span class="legend-item ovulation">Ovulation</span>
+                <span class="legend-item expected">Expected Period</span>
+            </div>
+            <button onclick="cancel()">CLOSE</button>
+        </div>
+        <!--<div id="menu-overlay" class="hidden">
+            <div class="menu-content">
+                <a href="dashboard.html">Home</a>
+                <a href="details.html">Profile</a>
+                <a href="calendar.html">Add Period</a>
+                <a href="symptoms.html">Log Symptoms</a>
+                <a href="pms-insights.html">PMS Insights</a>
+                <a href="cycle-statistics.html">Cycle Statistics</a>
+                <a href="login.html">Logout</a>
+            </div>-->
+        </div>    
+    </div>
+    <script src="db.js"></script>
+    <script src="app.js"></script>
+    <script>
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+                            "July", "August", "September", "October", "November", "December"];
+        const today = new Date();
+        const currentMonth = today.getMonth();
+        const currentYear = today.getFullYear();
+
+        document.getElementById('month-year').textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+        function generateCalendar(month, year) {
+            const firstDay = new Date(year, month).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            const calendarGrid = document.getElementById('calendar-grid');
+            calendarGrid.innerHTML = '';
+
+            // Add day headers
+            const days = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+            days.forEach(day => {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'day';
+                dayElement.textContent = day;
+                calendarGrid.appendChild(dayElement);
+            });
+
+            // Add blank days for the first week
+            for (let i = 0; i < firstDay; i++) {
+                const blankDay = document.createElement('div');
+                blankDay.className = 'date';
+                calendarGrid.appendChild(blankDay);
+            }
+
+            // Add days of the month
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dateElement = document.createElement('div');
+                dateElement.className = 'date';
+                dateElement.textContent = i;
+                if (i === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                    dateElement.classList.add('today');
+                }
+                calendarGrid.appendChild(dateElement);
+            }
+        }
+
+        generateCalendar(currentMonth, currentYear);
+    </script>
+    <!--<script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu-overlay');
+            menu.classList.toggle('hidden');
+        }
+    </script>-->
+</body>
+</html>

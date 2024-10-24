@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="iphone-container">
+        <div class="calendar-header">
+            <button class="home-button" onclick="location.href='dashboard.html'">🏠</button>
+            <button class="menu-button" onclick="location.href='menu.html'">☰</button>
+        </div>
+        <div id="content">
+            <h2 id="current-date"></h2>
+            <div class="circle">
+                <p>6 Days<br>for your next period</p>
+            </div>
+            <button onclick="location.href='add-period.html'">Add Period</button>
+            <button onclick="location.href='symptoms.html'">Log Symptoms</button>
+            <div class="menu">
+                <button onclick="location.href='calendar.html'">Calendar</button>
+                <button onclick="location.href='pms-insights.html'">PMS Insights</button>
+                <button onclick="location.href='cycle-analytics.html'">Cycle Analytics</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function displayCurrentDate() {
+            const dateElement = document.getElementById('current-date');
+            const today = new Date();
+            const options = { day: 'numeric', month: 'short', year: 'numeric' };
+            dateElement.textContent = today.toLocaleDateString('en-GB', options);
+        }
+        displayCurrentDate();
+    </script>
+</body>
+</html>
+

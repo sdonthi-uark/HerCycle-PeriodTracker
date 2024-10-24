@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Period Dates</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Include Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+</head>
+<body>
+    <div id="iphone-container">
+        <div class="calendar-header">
+            <button class="home-button" onclick="location.href='dashboard.html'">🏠</button>
+            <button class="menu-button" onclick="location.href='menu.html'">☰</button>
+        </div>
+        <div id="content">
+            <h1>Select Your Period Dates</h1>
+            <input type="text" id="period-dates" placeholder="Select your period dates" readonly>
+            <button type="button" onclick="savePeriodDates()">SAVE</button>
+            <button type="button" onclick="cancel()">CANCEL</button>
+        </div>
+    </div>
+
+    <!-- Include Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="js/db.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
+

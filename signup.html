@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="iphone-container">
+        <div id="content">
+            <h1>SIGNUP</h1>
+            <form onsubmit="return handleSignup(event)">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+                <div id="email-error" class="error-message"></div>
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+                
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" required>
+                <div id="password-error" class="error-message"></div>
+                
+                <button type="submit" onclick="location.href='details.html'">SIGNUP</button>
+            </form>
+            <p>Already have an account? <a href="login.html">LOGIN</a></p>
+        </div>
+    </div>
+
+    <script src="js/db.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

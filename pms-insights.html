@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMS Insights</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="iphone-container">
+        <div class="calendar-header">
+            <button class="home-button" onclick="location.href='dashboard.html'">🏠</button>
+            <button class="menu-button" onclick="location.href='menu.html'">☰</button>
+        </div>
+        <div id="content">
+            <p>Your PMS (PreMenstrual Syndrome) Insights</p>
+            <canvas id="pmsChart" width="200" height="100"></canvas>
+            <p>Mood Swings<p>
+            <canvas id="moodChart" width="150" height="100"></canvas>
+        </div>
+    </div>
+
+    <script src="js/db.js"></script>
+    <script src="js/pms.js"></script>
+</body>
+</html>
+
