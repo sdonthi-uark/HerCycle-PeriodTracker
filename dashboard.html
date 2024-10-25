@@ -15,7 +15,7 @@
         <div id="content">
             <h2 id="current-date"></h2>
             <div class="circle">
-                <p>6 Days<br>for your next period</p>
+                <p id="days-until-next-period"></p>
             </div>
             <button onclick="location.href='add-period.html'">Add Period</button>
             <button onclick="location.href='symptoms.html'">Log Symptoms</button>
@@ -26,6 +26,8 @@
             </div>
         </div>
     </div>
+    <script src="js/db.js"></script>
+    <script src="js/app.js"></script>
     <script>
         function displayCurrentDate() {
             const dateElement = document.getElementById('current-date');
@@ -33,7 +35,46 @@
             const options = { day: 'numeric', month: 'short', year: 'numeric' };
             dateElement.textContent = today.toLocaleDateString('en-GB', options);
         }
-        displayCurrentDate();
+        function calculateDaysUntilNextPeriod() {
+            const email = sessionStorage.getItem('email');
+            if (email) {
+                const transaction = db.transaction(['users'], 'readonly');
+                const objectStore = transaction.objectStore('users');
+                const index = objectStore.index('email');
+                const request = index.get(email);
+
+                request.onsuccess = function(event) {
+                    const userData = event.target.result;
+                    if (userData) {
+                        const periodStartDates = userData.periodDates.map(date => new Date(date.start));
+                        // Check for invalid dates
+                        periodStartDates.forEach(date => {
+                            if (isNaN(date.getTime())) {
+                                console.error('Invalid date found:', date);
+                            }
+                        });
+                        // Find the latest start date
+                        const latestStartDate = periodStartDates.reduce((latest, date) => {
+                            return date > latest ? date : latest;}, new Date(0));
+                        const cycleLength = userData.cycle.cycleLength;
+                        const today = new Date();
+                        const nextPeriodDate = new Date(latestStartDate);
+                        nextPeriodDate.setTime(latestStartDate.getTime() + cycleLength * 24 * 60 * 60 * 1000);
+                        const timeDiff = nextPeriodDate.getTime() - today.getTime();
+                        const daysUntilNextPeriod = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+                        document.getElementById('days-until-next-period').textContent = `${daysUntilNextPeriod} Days for your next period`;
+                    }
+                };
+
+                request.onerror = function(event) {
+                    console.error('Error retrieving user:', event.target.errorCode);
+                };
+            }
+        }
+        document.addEventListener('dbReady', function() {
+            displayCurrentDate();
+            calculateDaysUntilNextPeriod();
+        });
     </script>
 </body>
 </html>
