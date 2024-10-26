@@ -1,5 +1,5 @@
 body {
-    font-family: 'Cursive', sans-serif;
+    font-family: 'Pacifico', cursive;
     margin: 0;
     padding: 0;
     display: flex;
@@ -38,15 +38,17 @@ body {
 }
 
 h1 {
-    font-size: 2em;
-    color: #000;
-    margin: 10px 0;
-}
-
-h2, h3 {
     font-size: 1.5em;
     color: #000;
     margin: 10px 0;
+    font-family: 'Pacifico', cursive;
+}
+
+h2, h3 {
+    font-size: 1.2em;
+    color: #000;
+    margin: 10px 0;
+    font-family: 'Pacifico', cursive;
 }
 
 form {
@@ -64,10 +66,12 @@ input[type="number"] {
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-family: 'Pacifico', cursive;
 }
 
 input[type="checkbox"] {
     margin-left: 10px;
+    font-family: 'Pacifico', cursive;
 }
 
 button {
@@ -80,6 +84,7 @@ button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 1em;
+    font-family: 'Pacifico', cursive;
 }
 
 button:hover {
@@ -87,14 +92,16 @@ button:hover {
 }
 
 p {
-    font-size: 1em;
+    font-size: 0.8em;
     color: #000;
     margin: 10px 0 20px;
+    font-family: 'Pacifico', cursive;
 }
 
 a {
     color: #0000ff;
     text-decoration: none;
+    font-family: 'Pacifico', cursive;
 }
 
 .section {
@@ -104,12 +111,14 @@ a {
     margin-bottom: 20px;
     text-align: left;
     width: 95%;
+    font-family: 'Pacifico', cursive;
 }
 
 .checkbox-group, .radio-group {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    font-family: 'Pacifico', cursive;
 }
 
 label {
@@ -117,6 +126,7 @@ label {
     color: #000;
     margin: 5px 0;
     width: 45%;
+    font-family: 'Pacifico', cursive;
 }
 
 .circle {
@@ -128,17 +138,20 @@ label {
     justify-content: center;
     align-items: center;
     margin: 20px auto;
+    font-family: 'Pacifico', cursive;
 }
 
 .circle p {
-    font-size: 1.2em;
+    font-size: 1em;
     color: #000;
+    font-family: 'Pacifico', cursive;
 }
 
 .menu {
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
+    font-family: 'Pacifico', cursive;
 }
 
 .menu button {
@@ -146,12 +159,14 @@ label {
     padding: 10px;
     background-color: #f8d7da;
     border-radius: 10px;
+    font-family: 'Pacifico', cursive;
 }
 
 .calendar-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-family: 'Pacifico', cursive;
 }
 
 #header {
@@ -161,14 +176,16 @@ label {
     padding: 10px;
     position: relative;
     top: -10px; /* Adjust this value to move the buttons higher */
+    font-family: 'Pacifico', cursive;
 }
 
 .home-button, .menu-button {
     background: none;
     border: none;
-    font-size: 1em;
+    font-size: 1.5em;
     cursor: pointer;
     color: #FF6384; /* Match the theme color */
+    font-family: 'Pacifico', cursive;
 }
 
 .calendar {
@@ -183,41 +200,48 @@ label {
     background-color: #f8d7da;
     border-radius: 5px;
     text-align: center;
+    font-family: 'Pacifico', cursive;
 }
 
 .period {
     background-color: #ff6b6b;
+    font-family: 'Pacifico', cursive;
 }
 
 .ovulation {
     background-color: #4caf50;
+    font-family: 'Pacifico', cursive;
 }
 
 .expected {
     background-color: #ffeb3b;
+    font-family: 'Pacifico', cursive;
 }
 
 .today {
     background-color: #2196f3;
     color: #fff;
+    font-family: 'Pacifico', cursive;
 }
 
 .legend {
     display: flex;
     justify-content: space-around;
     margin: 10px 0;
+    font-family: 'Pacifico', cursive;
 }
 
 .legend-item {
     display: inline-block;
     padding: 5px;
     border-radius: 5px;
-    font-size: 0.9em;
+    font-size: 1em;
+    font-family: 'Pacifico', cursive;
 }
 
-.period { background-color: #ff6b6b; }
-.ovulation { background-color: #4caf50; }
-.expected { background-color: #ffeb3b; }
+.period { background-color: #ff6b6b; font-family: 'Pacifico', cursive;}
+.ovulation { background-color: #4caf50; font-family: 'Pacifico', cursive;}
+.expected { background-color: #ffeb3b; font-family: 'Pacifico', cursive;}
 
 #menu-overlay {
     position: absolute;
@@ -230,6 +254,7 @@ label {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    font-family: 'Pacifico', cursive;
 }
 
 .menu-content {
@@ -240,6 +265,7 @@ label {
     width: 80%;
     max-width: 300px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Pacifico', cursive;
 }
 
 .menu-content a {
@@ -248,6 +274,7 @@ label {
     color: #000;
     text-decoration: none;
     margin: 10px 0;
+    font-family: 'Pacifico', cursive;
 }
 
 .hidden {
@@ -255,8 +282,9 @@ label {
 }
 .error-message {
     color: red;
-    font-size: 0.9em;
+    font-size: 1em;
     margin-top: 5px;
+    font-family: 'Pacifico', cursive;
 }
 
 .statistics-box {
@@ -265,12 +293,14 @@ label {
     border-radius: 10px;
     text-align: center;
     margin-bottom: 20px;
+    font-family: 'Pacifico', cursive;
 }
 
 .circle-container {
     display: flex;
     justify-content: space-around;
     margin-top: 10px;
+    font-family: 'Pacifico', cursive;
 }
 
 .circle-analytics {
@@ -282,10 +312,12 @@ label {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: 'Pacifico', cursive;
 }
 
 canvas {
     margin-top: 20px;
+    font-family: 'Pacifico', cursive;
 }
 
 .menu-overlay {
@@ -298,16 +330,18 @@ canvas {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-family: 'Pacifico', cursive;
 }
 
 .menu-overlay a {
     font-size: 1em;
     text-decoration: none;
     color: #000;
-    font-family: 'Cursive', sans-serif;
     transition: color 0.3s;
+    font-family: 'Pacifico', cursive;
 }
 
 .menu-overlay a:hover {
     color: #FF6384;
+    font-family: 'Pacifico', cursive;
 }

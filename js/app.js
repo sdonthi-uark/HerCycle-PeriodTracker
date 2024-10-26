@@ -74,10 +74,6 @@ function saveDetails(event) {
     console.info('email',email)
 
     if (email) {
-        //const transaction = db.transaction(['users'], 'readwrite');
-        //const objectStore = transaction.objectStore('users');
-        //const request = objectStore.get(userId);
-
         const transaction = db.transaction(['users'], 'readwrite');
         const objectStore = transaction.objectStore('users');
         const index = objectStore.index('email');
@@ -88,6 +84,7 @@ function saveDetails(event) {
             console.log('userData',userData);
             userData.profile = { name, dob, height, weight};
             userData.cycle = { periodLength, cycleLength };
+            userData.lastPeriodDate = lastPeriodDate;
             const periodEndDate = calculatePeriodEndDate(lastPeriodDate, periodLength);
             userData.periodDates = [{start: lastPeriodDate, end: periodEndDate}];
             userData.notifications = { periodPredictionRemainder, ovulationReminder };
@@ -211,7 +208,7 @@ function calculatePeriodEndDate(lastPeriodDate, periodLength) {
 
     // Add the periodLength to the start date
     const endDate = new Date(startDate);
-    endDate.setDate(startDate.getDate() + periodLength);
+    endDate.setTime(startDate.getTime() + periodLength* 24 * 60 * 60 * 1000);
 
     return formatDate(endDate);
 }
@@ -286,4 +283,3 @@ function formatDate(date) {
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
 }
-
