@@ -55,61 +55,6 @@ function hashPassword(password) {
     return btoa(password);
 }
 
-function saveDetails(event) {
-    console.info('In saveDetails')
-    event.preventDefault();
-
-    const name = document.getElementById('name').value;
-    const dob = document.getElementById('dob').value;
-    const height = document.getElementById('height').value;
-    const weight = document.getElementById('weight').value;
-    const lastPeriodDate = document.getElementById('lastPeriodDate').value;
-    const periodLength = document.getElementById('periodLength').value;
-    const cycleLength = document.getElementById('cycleLength').value;
-    const periodPredictionRemainder = document.getElementById('periodPredictionReminder').value;
-    const ovulationReminder = document.getElementById('ovulationReminder').value;
-
-    // Assume email is stored in sessionStorage after signup
-    const email = sessionStorage.getItem('email');
-    console.info('email',email)
-
-    if (email) {
-        const transaction = db.transaction(['users'], 'readwrite');
-        const objectStore = transaction.objectStore('users');
-        const index = objectStore.index('email');
-        const request = index.get(email);
-
-        request.onsuccess = function(event) {
-            const userData = request.result;
-            console.log('userData',userData);
-            userData.profile = { name, dob, height, weight};
-            userData.cycle = { periodLength, cycleLength };
-            userData.lastPeriodDate = lastPeriodDate;
-            const periodEndDate = calculatePeriodEndDate(lastPeriodDate, periodLength);
-            userData.periodDates = [{start: lastPeriodDate, end: periodEndDate}];
-            userData.notifications = { periodPredictionRemainder, ovulationReminder };
-            userData.symptoms = {};
-
-            const updateRequest = objectStore.put(userData);
-
-            updateRequest.onsuccess = function() {
-                console.log('User details updated in the database');
-                window.location.href = 'dashboard.html';
-            };
-
-            updateRequest.onerror = function(event) {
-                console.error('Error updating user details:', event.target.errorCode);
-            };
-        };
-
-        request.onerror = function(event) {
-            console.error('Error retrieving user:', event.target.errorCode);
-        };
-    } else {
-        console.error('User ID not found in session');
-    }
-}
-
 function cancel() {
     // Handle cancel action, e.g., redirect to another page
     console.log('Cancelled');
