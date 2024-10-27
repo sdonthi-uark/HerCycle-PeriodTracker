@@ -227,6 +227,22 @@ function calculatePredictionsForCurrentAndNextMonths(latestDate, periodLength, c
         initCalendar();
     });
 
-document.addEventListener('dbReady', function() {
-    initCalendar();
+// document.addEventListener('dbReady', function() {
+//     initCalendar();
+// });
+
+document.addEventListener('dbReady', () => {
+    isDbReady = true;
+    checkAndLoadCalendar();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    isDomContentLoaded = true;
+    checkAndLoadCalendar();
+});
+
+function checkAndLoadCalendar() {
+    if (isDbReady && isDomContentLoaded) {
+        initCalendar();
+    }
+}

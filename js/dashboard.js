@@ -69,6 +69,22 @@ function calculateDaysUntilNextPeriod() {
     }
 }
 displayCurrentDate();
-document.addEventListener('dbReady', function() {
+/*document.addEventListener('dbReady', function() {
     calculateDaysUntilNextPeriod();
+});*/
+
+document.addEventListener('dbReady', () => {
+    isDbReady = true;
+    checkAndLoadDashboard();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    isDomContentLoaded = true;
+    checkAndLoadDashboard();
+});
+
+function checkAndLoadDashboard() {
+    if (isDbReady && isDomContentLoaded) {
+        calculateDaysUntilNextPeriod();
+    }
+}

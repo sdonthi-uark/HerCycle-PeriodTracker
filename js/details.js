@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function checkAndLoadUserData() {
     if (isDbReady && isDomContentLoaded) {
-        console.log('checkAndLoadUserData');
         loadUserData();
     }
 }
