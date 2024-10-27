@@ -1,6 +1,21 @@
 let isDbReady = false;
 let isDomContentLoaded = false;
 
+/**
+ * Checks if both the database and DOM are ready to load user data
+ * This function acts as a synchronization point between database initialization
+ * and DOM content loading. It ensures user data is only loaded when both
+ * prerequisites are met.
+ * 
+ * The function uses two boolean flags:
+ * - isDbReady: Set when IndexedDB is initialized and ready
+ * - isDomContentLoaded: Set when the DOM content is fully loaded
+ * 
+ * When both flags are true, it triggers loadUserData() to populate the form
+ * 
+ * @returns {void}
+ */
+
 function loadUserData() {
     const email = sessionStorage.getItem('email');
     if (!email) {

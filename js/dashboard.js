@@ -1,9 +1,23 @@
+/**
+ * Displays the current date in the format "DD MMM YYYY" in the element with id 'current-date'
+ */
+
 function displayCurrentDate() {
     const dateElement = document.getElementById('current-date');
     const today = new Date();
     const options = { day: 'numeric', month: 'short', year: 'numeric' };
     dateElement.textContent = today.toLocaleDateString('en-GB', options);
 }
+
+/**
+ * Calculates and displays the number of days until the user's next expected period
+ * Uses the user's email from sessionStorage to retrieve their data from IndexedDB
+ * Calculates based on either:
+ * - The latest start date from recorded period dates, or
+ * - The last period date if no period dates are recorded
+ * Updates the 'days-until-next-period' element with the calculated days remaining
+ */
+
 function calculateDaysUntilNextPeriod() {
     const email = sessionStorage.getItem('email');
     if (email) {

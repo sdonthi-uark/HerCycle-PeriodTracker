@@ -46,6 +46,25 @@ new Chart(ctx, {
 
 document.addEventListener('dbReady', calculateAndDisplayAverages);
 
+/**
+ * Calculates and displays the average cycle and period lengths for a user
+ * This function is triggered when the database is ready ('dbReady' event)
+ * It retrieves user data from IndexedDB, calculates averages from period dates,
+ * and updates the UI with the results
+ * 
+ * If there is insufficient data (less than 2 period dates), it falls back to using
+ * the user's configured cycle/period lengths
+ * 
+ * The function:
+ * - Gets the user's email from session storage
+ * - Queries the IndexedDB for user data
+ * - Calculates average cycle length between consecutive period start dates
+ * - Calculates average period length from start/end dates
+ * - Updates the UI elements with calculated averages
+ * 
+ * @listens dbReady
+ * @returns {void}
+ */
 function calculateAndDisplayAverages() {
     console.log('calculateAndDisplayAverages');
     const email = sessionStorage.getItem('email');

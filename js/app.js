@@ -1,3 +1,10 @@
+/**
+ * Handles the signup form submission
+ * Validates email and password fields
+ * Creates a new user record in IndexedDB if validation passes
+ * Stores email in session storage and redirects to details page on success
+ * @param {Event} event - The form submission event
+ */
 function handleSignup(event) {
     event.preventDefault();
 
@@ -46,21 +53,39 @@ function handleSignup(event) {
     }
 }
 
+/**
+ * Generates a unique user ID by combining 'user_' prefix with a random string
+ * @returns {string} A unique user identifier
+ */
 function generateUserId() {
     return 'user_' + Math.random().toString(36).substr(2, 9);
 }
 
+/**
+ * Creates a simple hash of the password using base64 encoding
+ * Note: This is for demonstration only and should not be used in production
+ * @param {string} password - The password to hash
+ * @returns {string} Base64 encoded password
+ */
 function hashPassword(password) {
     // Simple hash function for demonstration (use a proper hashing library in production)
     return btoa(password);
 }
 
+/**
+ * Handles the cancel action by redirecting to the dashboard
+ */
 function cancel() {
     // Handle cancel action, e.g., redirect to another page
     console.log('Cancelled');
     window.location.href = 'dashboard.html';
 }
 
+/**
+ * Handles the user login process
+ * Validates credentials against stored user data and manages login flow
+ * @param {Event} event - The login form submission event
+ */
 function handleLogin(event) {
     event.preventDefault();
 
@@ -97,6 +122,14 @@ function handleLogin(event) {
         console.error('Error retrieving user:', event.target.errorCode);
     };
 }
+
+/**
+ * Saves user-reported symptoms to the database
+ * Collects mood, PMS symptoms, spotting and flow data from the symptoms form
+ * Stores the data in the user's record with the current date as key
+ * @param {Event} event - The symptoms form submission event
+ */
+
 function saveSymptoms(event) {
     event.preventDefault();
     console.log('Symptoms saving to the database');
@@ -147,6 +180,14 @@ function saveSymptoms(event) {
     }
 }
 
+/**
+ * Saves symptoms data to the database for the current user
+ * Collects mood, PMS symptoms, spotting and flow data from the symptoms form
+ * Stores the data in IndexedDB under the user's record with today's date as key
+ * Redirects to dashboard on successful save
+ * @param {Event} event - The form submission event
+ */
+
 function calculatePeriodEndDate(lastPeriodDate, periodLength) {
     // Parse the lastPeriodDate string into a Date object
     const startDate = new Date(lastPeriodDate);
@@ -157,6 +198,7 @@ function calculatePeriodEndDate(lastPeriodDate, periodLength) {
 
     return formatDate(endDate);
 }
+
 // Initialize Flatpickr for date range selection
 flatpickr("#period-dates", {
     mode: "range",
@@ -165,6 +207,14 @@ flatpickr("#period-dates", {
         console.log("Selected dates:", dateStr);
     }
 });
+
+/**
+ * Saves period dates to the database for the current user
+ * Takes date range input from period-dates field
+ * Splits range into start and end dates
+ * Stores dates in user's periodDates array in IndexedDB
+ * Logs success/error messages to console
+ */
 
 function savePeriodDates() {
     const periodDatesInput = document.getElementById('period-dates');
@@ -221,7 +271,12 @@ function savePeriodDates() {
         console.error("No dates selected");
     }
 }
-// Function to format a Date object into "YYYY-MM-DD"
+
+/*
+ * Function to format a Date object into YYYY-MM-DD string format
+ * Takes a Date object as input
+ * Returns a string in YYYY-MM-DD format with leading zeros for month and day
+ */
 function formatDate(date) {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-indexed
