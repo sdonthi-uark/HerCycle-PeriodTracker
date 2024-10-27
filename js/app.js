@@ -254,6 +254,7 @@ function savePeriodDates() {
 
                 updateRequest.onsuccess = function() {
                     console.log('Period dates saved to the database');
+                    window.location.reload();
                 };
 
                 updateRequest.onerror = function(event) {
