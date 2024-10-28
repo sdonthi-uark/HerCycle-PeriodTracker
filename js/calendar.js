@@ -132,8 +132,15 @@ function getUserDataFromDB(email) {
  */
 function initCalendar() {
     const email = sessionStorage.getItem('email');
-    getUserDataFromDB(email)
-        .then(userData => {
+    if(email){
+
+        const transaction = db.transaction(['users'], 'readonly');
+        const objectStore = transaction.objectStore('users');
+        const index = objectStore.index('email');
+        const request = index.get(email);
+        
+        request.onsuccess = function(event) {
+            const userData = event.target.result;
             const periodDates = userData.periodDates;
             const cycleLength = userData.cycle.cycleLength;
 
@@ -141,13 +148,15 @@ function initCalendar() {
             const periodLength = userData.cycle.periodLength;
 
             const predictions = calculatePredictionsForCurrentAndNextMonths(latestDate, periodLength, cycleLength);
-            console.log('predictions:: ',predictions)
-            console.log('periodDates:: ',periodDates)
             generateCalendar(predictions, periodDates, currentMonthOffset);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+        };
+        request.onerror = function(event) {
+            console.error('Error retrieving user:', event.target.errorCode);
+        };
+    }
+    else {
+        console.error('User email not found in session');
+    }
 }
 
 
