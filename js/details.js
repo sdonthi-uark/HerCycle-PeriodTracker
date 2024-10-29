@@ -109,7 +109,6 @@ function saveDetails(event) {
             const periodEndDate = calculatePeriodEndDate(lastPeriodDate, periodLength);
             userData.periodDates = [{start: lastPeriodDate, end: periodEndDate}];
             userData.notifications = { periodPredictionReminder, ovulationReminder };
-            userData.symptoms = {};
 
             const updateRequest = objectStore.put(userData);
 
