@@ -258,3 +258,12 @@ function checkAndLoadCalendar() {
         initCalendar();
     }
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const request = indexedDB.open('UserDatabase', 1);
+    request.onsuccess = function(event) {
+        db = event.target.result;
+        console.log('Database opened successfully');
+        initCalendar();
+    }; 
+});

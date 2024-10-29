@@ -76,15 +76,19 @@ displayCurrentDate();
     calculateDaysUntilNextPeriod();
 });*/
 
-document.addEventListener('dbReady', function() {
+/*document.addEventListener('dbReady', function() {
     isDbReady = true;
     checkAndLoadDashboard();
     //calculateDaysUntilNextPeriod();
-});
+});*/
 
 document.addEventListener('DOMContentLoaded', function() {
-    isDomContentLoaded = true;
-    checkAndLoadDashboard();
+    const request = indexedDB.open('UserDatabase', 1);
+    request.onsuccess = function(event) {
+        db = event.target.result;
+        console.log('Database opened successfully');
+        calculateDaysUntilNextPeriod();
+    };
 });
 
 function checkAndLoadDashboard() {
