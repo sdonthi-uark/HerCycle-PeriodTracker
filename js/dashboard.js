@@ -74,11 +74,12 @@ displayCurrentDate();
 });*/
 
 document.addEventListener('dbReady', () => {
-    isDbReady = true;
-    checkAndLoadDashboard();
+    //isDbReady = true;
+    //checkAndLoadDashboard();
+    calculateDaysUntilNextPeriod();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+/*document.addEventListener('DOMContentLoaded', () => {
     isDomContentLoaded = true;
     checkAndLoadDashboard();
 });
@@ -87,4 +88,4 @@ function checkAndLoadDashboard() {
     if (isDbReady && isDomContentLoaded) {
         calculateDaysUntilNextPeriod();
     }
-}
+}*/
