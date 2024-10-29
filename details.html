@@ -9,7 +9,7 @@
 <body>
     <div id="iphone-container">
         <div id="content">
-            <form onsubmit="return saveDetails(event)">
+            <form>
             <h2>Welcome,</h2>
             <p>Provide these details to help us track your period</p>
             
@@ -49,7 +49,7 @@
                 <input type="checkbox" id="ovulationReminder" >
             </div>
             
-            <button type="submit">SAVE</button>
+            <button onclick="savePeriodDates()">SAVE</button>
             <button onclick="cancel()">CLOSE</button>
             </form>
         </div>

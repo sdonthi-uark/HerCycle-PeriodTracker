@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function saveDetails(event) {
     event.preventDefault();
-
+    console.info('Saving details...');
     const name = document.getElementById('name').value;
     const dob = document.getElementById('dob').value;
     const height = document.getElementById('height').value;
