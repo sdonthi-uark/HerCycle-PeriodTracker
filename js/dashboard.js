@@ -73,13 +73,13 @@ displayCurrentDate();
     calculateDaysUntilNextPeriod();
 });*/
 
-document.addEventListener('dbReady', () => {
-    //isDbReady = true;
-    //checkAndLoadDashboard();
-    calculateDaysUntilNextPeriod();
+document.addEventListener('dbReady', function() {
+    isDbReady = true;
+    checkAndLoadDashboard();
+    //calculateDaysUntilNextPeriod();
 });
 
-/*document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     isDomContentLoaded = true;
     checkAndLoadDashboard();
 });
@@ -88,4 +88,4 @@ function checkAndLoadDashboard() {
     if (isDbReady && isDomContentLoaded) {
         calculateDaysUntilNextPeriod();
     }
-}*/
+}
