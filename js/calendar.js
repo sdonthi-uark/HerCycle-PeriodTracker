@@ -8,6 +8,9 @@ document.getElementById('month-year').textContent = `${monthNames[currentMonth]}
 
 let currentMonthOffset = 0;
 
+let isDbReady = false;
+let isDomContentLoaded = false;
+
 /**
  * Generates and displays the calendar grid for a specific month.
  * - Aligns days correctly within the grid.

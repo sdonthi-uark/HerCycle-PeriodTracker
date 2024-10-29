@@ -2,6 +2,9 @@
  * Displays the current date in the format "DD MMM YYYY" in the element with id 'current-date'
  */
 
+let isDbReady = false;
+let isDomContentLoaded = false;
+
 function displayCurrentDate() {
     const dateElement = document.getElementById('current-date');
     const today = new Date();
