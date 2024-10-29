@@ -101,7 +101,7 @@ function generateDonutChart(moods) {
     });
 }
 
-document.addEventListener('dbReady', function() {
+/*document.addEventListener('dbReady', function() {
     fetchSymptomsData(symptomsData => {
         const topSymptoms = processSymptomsData(symptomsData, 'pms', 5);
         generateBarChart(topSymptoms);
@@ -109,5 +109,20 @@ document.addEventListener('dbReady', function() {
         const topMoods = processSymptomsData(symptomsData, 'mood', 3);
         generateDonutChart(topMoods);
     });
+});*/
+
+document.addEventListener('DOMContentLoaded', function() {
+    const request = indexedDB.open('UserDatabase', 1);
+    request.onsuccess = function(event) {
+        db = event.target.result;
+        console.log('Database opened successfully');
+        fetchSymptomsData(symptomsData => {
+            const topSymptoms = processSymptomsData(symptomsData, 'pms', 5);
+            generateBarChart(topSymptoms);
+    
+            const topMoods = processSymptomsData(symptomsData, 'mood', 3);
+            generateDonutChart(topMoods);
+        });
+    };
 });
 

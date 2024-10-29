@@ -44,7 +44,16 @@ new Chart(ctx, {
     }
 });
 
-document.addEventListener('dbReady', calculateAndDisplayAverages);
+//document.addEventListener('dbReady', calculateAndDisplayAverages);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const request = indexedDB.open('UserDatabase', 1);
+    request.onsuccess = function(event) {
+        db = event.target.result;
+        console.log('Database opened successfully');
+        calculateAndDisplayAverages();
+    };
+});
 
 /**
  * Calculates and displays the average cycle and period lengths for a user
@@ -81,7 +90,6 @@ function calculateAndDisplayAverages() {
 
         getRequest.onsuccess = function(event) {
             const userData = event.target.result;
-            console.log('userData:: ', userData);
             if (!userData || !userData.periodDates || userData.periodDates.length < 2) {
                 console.warn('Not enough data to calculate averages.');
                 const averageCycleLength = userData.cycle.cycleLength;
@@ -116,8 +124,6 @@ function calculateAndDisplayAverages() {
             const averageCycleLength = totalCycleLength / (startDates.length - 1);
             const averagePeriodLength = totalPeriodLength / periodDates.length;
 
-            console.log('averageCycleLength:: ', averageCycleLength);
-            console.log('averagePeriodLength::', averagePeriodLength);
             // Update the HTML with the calculated averages
             document.getElementById('average-cycle-length').textContent = `${Math.round(averageCycleLength)} Days`;
             document.getElementById('average-period-length').textContent = `${Math.round(averagePeriodLength)} Days`;
